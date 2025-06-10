@@ -1,1 +1,11 @@
-<p>media-card works!</p>
+<div class="card" (click)="goToDetail()">
+    <div class="card-image">
+        <figure class="image is-4by3">
+            <img [src]="media.Poster" alt="{{ media.Title }}" class="is-fullwidth poster-img">
+        </figure>
+    </div>
+    <div class="card-content">
+        <p class="title is-6">{{ media.Title }}</p>
+        <p class="subtitle is-7">{{ media.Year }} - {{ media.Type }}</p>
+    </div>
+</div>
