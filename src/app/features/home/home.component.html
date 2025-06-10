@@ -1,1 +1,23 @@
-<p>home works!</p>
+<section class="section">
+    <div class="container">
+        <h1 class="title">Bienvenido a WatchLog</h1>
+        <div class="field has-addons">
+            <div class="control is-expanded">
+                <input [(ngModel)]="query" class="input" placeholder="Buscar pelicula o serie...">
+            </div>
+            <div class="control">
+                <button class="button is-info" (click)="search()">Buscar</button>
+            </div>
+        </div>
+
+        <div *ngIf="results.length > 0" class="columns is-multiline">
+            <div class="column is-one-quarter is-flex is-flex-direction-column" *ngFor="let media of results">
+                <div class="card-wrapper is-flex-grow-1 is-full-height">
+                    <app-media-card [media]="media"></app-media-card>
+                </div>
+            </div>
+        </div>
+
+        <p *ngIf="results.length === 0 && searched">No se encontraron resultados.</p>
+    </div>
+</section>
