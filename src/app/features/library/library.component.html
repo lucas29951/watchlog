@@ -1,1 +1,12 @@
-<p>library works!</p>
+<section class="section">
+    <div class="container">
+        <h1 class="title">Mi lista</h1>
+        <div class="columns is-multiline">
+            <div class="column is-one-quarter" *ngFor="let media of list">
+                <app-media-card [media]="media"></app-media-card>
+                <button class="button is-danger is-small mt-2" (click)="remove(media.imdbID)">Eliminar</button>
+            </div>
+        </div>
+        <p *ngIf="list.length === 0">No hay contenido en tu lista.</p>
+    </div>
+</section>
