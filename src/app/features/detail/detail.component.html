@@ -1,1 +1,20 @@
-<p>detail works!</p>
+<section class="section" *ngIf="media">
+    <div class="container">
+        <div class="columns">
+            <div class="column is-one-third">
+                <figure class="image">
+                    <img [src]="media.Poster">
+                </figure>
+            </div>
+            <div class="column">
+                <h1 class="title">{{ media.Title }}</h1>
+                <p><strong>Año: </strong>{{ media.Year }}</p>
+                <p><strong>Genero: </strong>{{ media.Genre }}</p>
+                <p><strong>Director: </strong>{{ media.Director }}</p>
+                <p><strong>Sinopsis: </strong>{{ media.Plot }}</p>
+                <br>
+                <button class="button is-primary" (click)="addToList()">Agregar a mi lista</button>
+            </div>
+        </div>
+    </div>
+</section>
