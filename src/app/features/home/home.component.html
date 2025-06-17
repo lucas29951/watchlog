@@ -1,6 +1,7 @@
 <section class="section">
     <div class="container">
         <h1 class="title">Bienvenido a WatchLog</h1>
+
         <div class="field has-addons">
             <div class="control is-expanded">
                 <input [(ngModel)]="query" class="input" placeholder="Buscar pelicula o serie...">
@@ -10,14 +11,48 @@
             </div>
         </div>
 
-        <div *ngIf="results.length > 0" class="columns is-multiline">
-            <div class="column is-one-quarter is-flex is-flex-direction-column" *ngFor="let media of results">
-                <div class="card-wrapper is-flex-grow-1 is-full-height">
-                    <app-media-card [media]="media"></app-media-card>
+        <div *ngIf="searched">
+            <div class="tabs is-toggle is-fullwidth is-centered">
+                <ul>
+                    <li [class.is-active]="activeTab === 'movie'">
+                        <a (click)="setTab('movie')">Películas</a>
+                    </li>
+                    <li [class.is-active]="activeTab === 'series'">
+                        <a (click)="setTab('series')">Series</a>
+                    </li>
+                    <li [class.is-active]="activeTab === 'anime'">
+                        <a (click)="setTab('anime')">Animes</a>
+                    </li>
+                </ul>
+            </div>
+
+            <div *ngIf="activeTab === 'movie'">
+                <div class="columns is-multiline">
+                    <div class="column is-one-quarter" *ngFor="let media of movies">
+                        <app-media-card [media]="media"></app-media-card>
+                    </div>
                 </div>
+                <p *ngIf="movies.length === 0">No se encontraron películas.</p>
+            </div>
+
+            <div *ngIf="activeTab === 'series'">
+                <div class="columns is-multiline">
+                    <div class="column is-one-quarter" *ngFor="let media of series">
+                        <app-media-card [media]="media"></app-media-card>
+                    </div>
+                </div>
+                <p *ngIf="series.length === 0">No se encontraron series.</p>
+            </div>
+
+            <div *ngIf="activeTab === 'anime'">
+                <div class="columns is-multiline">
+                    <div class="column is-one-quarter" *ngFor="let media of animes">
+                        <app-media-card [media]="media"></app-media-card>
+                    </div>
+                </div>
+                <p *ngIf="animes.length === 0">No se encontraron animes.</p>
             </div>
         </div>
 
-        <p *ngIf="results.length === 0 && searched">No se encontraron resultados.</p>
     </div>
 </section>
