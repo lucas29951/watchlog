@@ -16,7 +16,11 @@ export class HomeComponent {
 
   query: string = '';
   results: Media[] = [];
+  movies: Media[] = [];
+  series: Media[] = [];
+  animes: Media[] = [];
   searched = false;
+  activeTab: 'movie' | 'series' | 'anime' = 'movie';
 
   constructor(private omdb: OmdbService) {}
 
@@ -36,6 +40,14 @@ export class HomeComponent {
         Director: item.Director,
         Plot: item.Plot
       })) || [];
+
+      this.movies = this.results.filter(m => m.Type === 'movie');
+      this.series = this.results.filter(m => m.Type === 'series');
+      this.animes = this.results.filter(m => m.Type === 'anime');
     });
+  }
+
+  setTab(tab: 'movie' | 'series' | 'anime') {
+    this.activeTab = tab;
   }
 }
