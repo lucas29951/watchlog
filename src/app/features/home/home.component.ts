@@ -35,7 +35,8 @@ export class HomeComponent {
         Year: item.Year,
         Type: item.Type,
         Poster: item.Poster,
-        Rating: item.Rating,
+        //imdbRating: item.imdbRating,
+        imdbRating: Math.round(Math.random() * 10 * 10) / 10,
         Genre: item.Genre,
         Director: item.Director,
         Plot: item.Plot
