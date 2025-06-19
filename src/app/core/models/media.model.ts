@@ -4,7 +4,7 @@ export interface Media {
     Year: string;
     Type: 'movie' | 'series' | 'anime';
     Poster: string;
-    Rating: number;
+    imdbRating?: number;
     Genre: string;
     Director: string;
     Plot: string;
