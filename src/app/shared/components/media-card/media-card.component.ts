@@ -19,4 +19,10 @@ export class MediaCardComponent {
   goToDetail(): void {
     this.router.navigate(['/detail', this.media.imdbID]);
   }
+
+  getRatingColor(rating: number): string {
+    if (rating >= 7) return 'green';
+    if (rating >= 5) return 'yellow';
+    return 'red';
+  }
 }
