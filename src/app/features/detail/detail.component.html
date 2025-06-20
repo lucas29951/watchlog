@@ -4,10 +4,16 @@
             <div class="column is-one-third">
                 <figure class="image">
                     <img [src]="media.Poster">
+
                 </figure>
             </div>
             <div class="column">
-                <h1 class="title">{{ media.Title }}</h1>
+                <h1 class="title title-rating">
+                    {{ media.Title }}
+                    <div class="rating-circle" *ngIf="media.imdbRating !== undefined" [ngClass]="getRatingColor(media.imdbRating)">
+                        <span>{{ media.imdbRating }}</span>
+                    </div>
+                </h1>
                 <p><strong>Año: </strong>{{ media.Year }}</p>
                 <p><strong>Genero: </strong>{{ media.Genre }}</p>
                 <p><strong>Director: </strong>{{ media.Director }}</p>
