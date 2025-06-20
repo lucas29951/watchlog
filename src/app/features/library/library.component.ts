@@ -14,6 +14,7 @@ import { MediaCardComponent } from "../../shared/components/media-card/media-car
 export class LibraryComponent implements OnInit {
 
   list: Media[] = [];
+  viewMode: 'grid' | 'list' = 'grid';
 
   constructor(private storage: StorageService) {}
 
@@ -24,5 +25,15 @@ export class LibraryComponent implements OnInit {
   remove(id: string): void {
     this.storage.removeFromList(id);
     this.list = this.storage.getList();
+  }
+
+  switchView(mode: 'grid' | 'list') {
+    this.viewMode = mode;
+  }
+
+  getRatingColor(rating: number): string {
+    if (rating >= 7) return 'green';
+    if (rating >= 5) return 'yellow';
+    return 'red';
   }
 }
