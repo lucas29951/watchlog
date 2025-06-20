@@ -1,12 +1,46 @@
 <section class="section">
     <div class="container">
-        <h1 class="title">Mi lista</h1>
-        <div class="columns is-multiline">
-            <div class="column is-one-quarter" *ngFor="let media of list">
-                <app-media-card [media]="media"></app-media-card>
-                <button class="button is-danger is-small mt-2" (click)="remove(media.imdbID)">Eliminar</button>
+        <div class="level">
+            <div class="level-left">
+                <h1 class="title">Mi Biblioteca</h1>
+            </div>
+            <div class="level-right buttons">
+                <button class="button" [class.is-info]="viewMode === 'grid'" (click)="switchView('grid')">
+                    <span class="icon"><i class="fas fa-th"></i></span>
+                    <span>Cuadrícula</span>
+                </button>
+                <button class="button" [class.is-info]="viewMode === 'list'" (click)="switchView('list')">
+                    <span class="icon"><i class="fas fa-list"></i></span>
+                    <span>Lista</span>
+                </button>
             </div>
         </div>
-        <p *ngIf="list.length === 0">No hay contenido en tu lista.</p>
+
+        <div *ngIf="viewMode === 'grid'" class="columns is-multiline">
+            <div class="column is-one-quarter" *ngFor="let media of list">
+                <app-media-card [media]="media"></app-media-card>
+            </div>
+        </div>
+
+        <div *ngIf="viewMode === 'list'" class="media-list">
+            <div class="box" *ngFor="let media of list">
+                <article class="media">
+                    <figure class="media-left thumbnail-list-view">
+                        <img [src]="media.Poster" alt="{{ media.Title }}">
+                    </figure>
+                    <div class="media-content">
+                        <h1 class="title is-5 title-flex">
+                            {{ media.Title }}
+                            <div class="rating-circle" *ngIf="media.imdbRating !== undefined" [ngClass]="getRatingColor(media.imdbRating)">
+                                <span>{{ media.imdbRating }}</span>
+                            </div>
+                        </h1>
+                        <p class="subtitle is-6">{{ media.Year }} - {{ media.Type }}</p>
+                        <p class="subtitle is-6">Director: {{ media.Director }}</p>
+                        <p class="subtitle is-6">Genero: {{ media.Genre }}</p>
+                    </div>
+                </article>
+            </div>
+        </div>
     </div>
 </section>
