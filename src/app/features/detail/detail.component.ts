@@ -34,4 +34,10 @@ export class DetailComponent implements OnInit {
   addToList(): void {
     this.storage.addToList(this.media);
   }
+
+  getRatingColor(rating: number): string {
+    if (rating >= 7) return 'green';
+    if (rating >= 5) return 'yellow';
+    return 'red';
+  }
 }
