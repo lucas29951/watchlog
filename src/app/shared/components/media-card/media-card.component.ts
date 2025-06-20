@@ -1,7 +1,8 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { Media } from '../../../core/models/media.model';
+import { OmdbService } from '../../../core/services/omdb.service';
 
 @Component({
   selector: 'app-media-card',
@@ -10,11 +11,20 @@ import { Media } from '../../../core/models/media.model';
   templateUrl: './media-card.component.html',
   styleUrls: ['./media-card.component.css']
 })
-export class MediaCardComponent {
+export class MediaCardComponent implements OnInit {
 
   @Input() media!: Media;
 
-  constructor(private router: Router) {}
+  constructor(
+    private router: Router,
+    private omdb: OmdbService
+  ) {}
+
+  ngOnInit(): void {
+      this.omdb.getMediaDetails(this.media.imdbID).subscribe( data => {
+        this.media = data;
+      });
+  }
 
   goToDetail(): void {
     this.router.navigate(['/detail', this.media.imdbID]);
