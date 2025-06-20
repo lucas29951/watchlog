@@ -1,0 +1,35 @@
+
+.title-rating {
+    display: flex;
+    gap: 15px;
+}
+
+.rating-circle {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  background: #333;
+  color: #fff;
+  font-weight: bold;
+  font-size: 0.8rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+  border: 3px solid;
+}
+
+.rating-circle.green {
+  border-color: #21d07a;
+  background-color: #143d2e;
+}
+
+.rating-circle.yellow {
+  border-color: #d2d531;
+  background-color: #3d3a15;
+}
+
+.rating-circle.red {
+  border-color: #db2360;
+  background-color: #571435;
+}
