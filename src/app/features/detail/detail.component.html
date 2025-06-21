@@ -19,7 +19,9 @@
                 <p><strong>Director: </strong>{{ media.Director }}</p>
                 <p><strong>Sinopsis: </strong>{{ media.Plot }}</p>
                 <br>
-                <button class="button is-primary" (click)="addToList()">Agregar a mi lista</button>
+                <button class="button is-primary" (click)="toggleLibrary()">
+                    {{ isInLibrary ? 'Eliminar de mi lista' : 'Agregar a mi lista' }}
+                </button>
             </div>
         </div>
     </div>
