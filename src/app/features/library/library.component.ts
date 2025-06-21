@@ -27,6 +27,11 @@ export class LibraryComponent implements OnInit {
     this.list = this.storage.getList();
   }
 
+  removeFromLibrary(id: string): void {
+    this.list = this.list.filter(item => item.imdbID !== id);
+    this.storage.saveList(this.list);
+  }
+
   switchView(mode: 'grid' | 'list') {
     this.viewMode = mode;
   }
