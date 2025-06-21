@@ -20,8 +20,10 @@
 }
 
 .rating-circle {
-  position: absolute;
-  right: 10px;
+  /* position: absolute; */
+  /* right: 10px; */
+  margin-left: 20px;
+  margin-top: -10px;
   width: 45px;
   height: 45px;
   border-radius: 50%;
