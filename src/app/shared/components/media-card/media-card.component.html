@@ -10,5 +10,8 @@
     <div class="card-content">
         <p class="title is-6">{{ media.Title }}</p>
         <p class="subtitle is-7">{{ media.Year }} - {{ media.Type }}</p>
+        <button class="button is-primary" (click)="toggleLibrary()">
+            {{ isInLibrary ? 'Eliminar de mi lista' : 'Agregar a mi lista' }}
+        </button>
     </div>
 </div>
