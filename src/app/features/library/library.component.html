@@ -47,3 +47,10 @@
         </div>
     </div>
 </section>
+
+<app-notification
+  *ngIf="showNotification"
+  [message]="notificationMessage"
+  type="is-danger"
+  (close)="showNotification = false">
+</app-notification>
