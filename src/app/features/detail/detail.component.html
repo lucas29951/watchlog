@@ -26,3 +26,10 @@
         </div>
     </div>
 </section>
+
+<app-notification
+  *ngIf="showNotification"
+  [message]="notificationMessage"
+  [type]="notificationType"
+  (close)="showNotification = false">
+</app-notification>
